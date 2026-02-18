@@ -54,39 +54,40 @@ const Projects = ({ projectsData, setSelectedProject, selectedProject }) => {
                     <div
                         className="glass modal-content-view"
                         onClick={(e) => e.stopPropagation()}
-                        <button
-                        onClick={() => setSelectedProject(null)}
-                        style={{
-                            position: 'absolute',
-                            top: '20px',
-                            right: '20px',
-                            background: 'none',
-                            border: 'none',
-                            color: 'white',
-                            fontSize: '2rem',
-                            lineHeight: '1',
-                            cursor: 'pointer',
-                            transition: 'var(--transition)',
-                            zIndex: 10,
-                            opacity: 0.7
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                        onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
-                        aria-label="Close"
                     >
-                        ×
-                    </button>
-                    <div className="modal-image" style={{ background: `url(${selectedProject.img}) center/cover` }}></div>
-                    <h2 className="modal-title">{selectedProject.title}</h2>
-                    <p style={{ color: 'var(--accent-color)', fontWeight: '600', marginBottom: '20px' }}>{selectedProject.tech}</p>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>
-                        {selectedProject.desc} Detailed documentation including system architecture and development logs.
-                    </p>
-                    <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                        <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="btn-primary">View Project</a>
-                        <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="glass" style={{ padding: '12px 28px', border: '1px solid var(--glass-border)', borderRadius: '30px', fontWeight: '600' }}>GitHub Repo</a>
+                        <button
+                            onClick={() => setSelectedProject(null)}
+                            style={{
+                                position: 'absolute',
+                                top: '20px',
+                                right: '20px',
+                                background: 'none',
+                                border: 'none',
+                                color: 'white',
+                                fontSize: '2rem',
+                                lineHeight: '1',
+                                cursor: 'pointer',
+                                transition: 'var(--transition)',
+                                zIndex: 10,
+                                opacity: 0.7
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                            onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+                            aria-label="Close"
+                        >
+                            ×
+                        </button>
+                        <div className="modal-image" style={{ background: `url(${selectedProject.img}) center/cover` }}></div>
+                        <h2 className="modal-title">{selectedProject.title}</h2>
+                        <p style={{ color: 'var(--accent-color)', fontWeight: '600', marginBottom: '20px' }}>{selectedProject.tech}</p>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>
+                            {selectedProject.desc} Detailed documentation including system architecture and development logs.
+                        </p>
+                        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                            <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="btn-primary">View Project</a>
+                            <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="glass" style={{ padding: '12px 28px', border: '1px solid var(--glass-border)', borderRadius: '30px', fontWeight: '600' }}>GitHub Repo</a>
+                        </div>
                     </div>
-                </div>
                 </div >
             )}
         </>

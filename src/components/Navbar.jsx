@@ -35,6 +35,7 @@ const Navbar = ({
                     <li><a href="#about" className={`magnetic ${activeSection === 'about' ? 'active-link' : ''}`}>About</a></li>
                     <li><a href="#skills" className={`magnetic ${activeSection === 'skills' ? 'active-link' : ''}`}>Technical</a></li>
                     <li><a href="#projects" className={`magnetic ${activeSection === 'projects' ? 'active-link' : ''}`}>Projects</a></li>
+
                     <li>
                         <button
                             onClick={toggleTheme}
@@ -106,6 +107,26 @@ const Navbar = ({
             </nav>
 
             <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}>
+                <button
+                    onClick={toggleMenu}
+                    style={{
+                        position: 'absolute',
+                        top: '30px',
+                        right: '30px',
+                        background: 'none',
+                        border: 'none',
+                        color: 'white',
+                        fontSize: '2.5rem',
+                        cursor: 'pointer',
+                        opacity: 0.8,
+                        transition: 'opacity 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                    onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
+                    aria-label="Close Menu"
+                >
+                    ×
+                </button>
                 <ul className="mobile-nav">
                     <li><a href="#home" onClick={toggleMenu} className={activeSection === 'home' ? 'active-link' : ''}>Home</a></li>
                     <li><a href="#about" onClick={toggleMenu} className={activeSection === 'about' ? 'active-link' : ''}>About</a></li>

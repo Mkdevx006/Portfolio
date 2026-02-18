@@ -14,7 +14,7 @@ import Contact from './components/Contact';
 import ChatWidget from './components/Chat/ChatWidget';
 import Footer from './components/Footer';
 import ScrollButtons from './components/common/ScrollButtons';
-import SocialSidebar from './components/SocialSidebar';
+
 import TechMarquee from './components/TechMarquee';
 
 const groq = new Groq({
@@ -266,7 +266,7 @@ function App() {
   return (
     <div className="app">
       <ParticleBackground key={isDarkMode ? 'dark' : 'light'} />
-      <SocialSidebar />
+
 
       <Navbar
         activeSection={activeSection}

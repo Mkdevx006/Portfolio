@@ -6,7 +6,7 @@ const Projects = ({ projectsData, setSelectedProject, selectedProject }) => {
         <>
             <section id="projects" className="container reveal" style={{ padding: 'var(--section-padding)' }}>
                 <h2 style={{ marginBottom: '40px' }}>Projects</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
+                <div className="projects-grid">
                     {projectsData.map((p, i) => (
                         <TiltCard key={i}>
                             <div className="glass project-card-hover stagger-item card-glow-container"
@@ -14,7 +14,7 @@ const Projects = ({ projectsData, setSelectedProject, selectedProject }) => {
                                 onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-10px)'}
                                 onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
                                 <div className="card-shimmer"></div>
-                                <div className="project-image" style={{ height: '220px', background: `url(${p.img}) center/cover`, transition: 'transform 0.5s ease' }}></div>
+                                <div className="project-image-view" style={{ height: '200px', background: `url(${p.img}) center/cover`, transition: 'transform 0.5s ease' }}></div>
                                 <div style={{ padding: '30px' }}>
                                     <div style={{ display: 'flex', gap: '8px', marginBottom: '15px' }}>
                                         {p.tags.map((tag, tIndex) => (
@@ -50,68 +50,44 @@ const Projects = ({ projectsData, setSelectedProject, selectedProject }) => {
                 <div
                     className="modal-overlay"
                     onClick={() => setSelectedProject(null)}
-                    style={{
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        background: 'rgba(0,0,0,0.8)',
-                        backdropFilter: 'blur(10px)',
-                        zIndex: 2000,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start', // Important for scrolling
-                        padding: '40px 20px',
-                        overflowY: 'auto' // Enable scrolling
-                    }}
                 >
                     <div
-                        className="glass"
+                        className="glass modal-content-view"
                         onClick={(e) => e.stopPropagation()}
-                        style={{
-                            maxWidth: '800px',
-                            width: '100%',
-                            padding: '40px',
-                            position: 'relative',
-                            animation: 'fadeInUp 0.4s ease-out',
-                            margin: 'auto 0' // Alternative: just let flex-start and padding handle it
-                        }}
-                    >
                         <button
-                            onClick={() => setSelectedProject(null)}
-                            style={{
-                                position: 'absolute',
-                                top: '20px',
-                                right: '20px',
-                                background: 'none',
-                                border: 'none',
-                                color: 'white',
-                                fontSize: '2rem',
-                                lineHeight: '1',
-                                cursor: 'pointer',
-                                transition: 'var(--transition)',
-                                zIndex: 10,
-                                opacity: 0.7
-                            }}
-                            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                            onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
-                            aria-label="Close"
-                        >
-                            ×
-                        </button>
-                        <div style={{ height: '300px', background: `url(${selectedProject.img}) center/cover`, borderRadius: '12px', marginBottom: '30px' }}></div>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>{selectedProject.title}</h2>
-                        <p style={{ color: 'var(--accent-color)', fontWeight: '600', marginBottom: '20px' }}>{selectedProject.tech}</p>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>
-                            {selectedProject.desc} Detailed documentation including system architecture and development logs.
-                        </p>
-                        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                            <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="btn-primary">View Project</a>
-                            <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="glass" style={{ padding: '12px 28px', border: '1px solid var(--glass-border)', borderRadius: '30px', fontWeight: '600' }}>GitHub Repo</a>
-                        </div>
+                        onClick={() => setSelectedProject(null)}
+                        style={{
+                            position: 'absolute',
+                            top: '20px',
+                            right: '20px',
+                            background: 'none',
+                            border: 'none',
+                            color: 'white',
+                            fontSize: '2rem',
+                            lineHeight: '1',
+                            cursor: 'pointer',
+                            transition: 'var(--transition)',
+                            zIndex: 10,
+                            opacity: 0.7
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                        onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
+                    <div className="modal-image" style={{ background: `url(${selectedProject.img}) center/cover` }}></div>
+                    <h2 className="modal-title">{selectedProject.title}</h2>
+                    <p style={{ color: 'var(--accent-color)', fontWeight: '600', marginBottom: '20px' }}>{selectedProject.tech}</p>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>
+                        {selectedProject.desc} Detailed documentation including system architecture and development logs.
+                    </p>
+                    <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                        <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="btn-primary">View Project</a>
+                        <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="glass" style={{ padding: '12px 28px', border: '1px solid var(--glass-border)', borderRadius: '30px', fontWeight: '600' }}>GitHub Repo</a>
                     </div>
                 </div>
+                </div >
             )}
         </>
     );
